@@ -1,0 +1,10 @@
+{"text":"<|user|> What is the capital of France? <|assistant|> The capital of France is Paris."}
+{"text":"<|user|> Who developed the theory of relativity? <|assistant|> The theory of relativity was developed by Albert Einstein."}
+{"text":"<|user|> What is the largest planet in our solar system? <|assistant|> The largest planet in our solar system is Jupiter."}
+{"text":"<|user|> Could you please translate \"Hello\" to French? <|assistant|> Sure! \"Hello\" in French is \"Bonjour\"."}
+{"text":"<|user|> Would you be so kind as to summarize this article? <|assistant|> Absolutely! Here’s a short summary of the article..."}
+{"text":"<|user|> Could you help me understand how gravity works? <|assistant|> Of course! Gravity is a force that attracts two masses towards each other..."}
+{"text":"<|user|> What is AI? <|assistant|> AI is a technology that allows machines to learn and make decisions."}
+{"text":"<|user|> What is AI? (long version) <|assistant|> AI, or Artificial Intelligence, is a branch of computer science that aims to create machines that can learn from data, recognize patterns, and make decisions. Its applications range from chatbots and self-driving cars to medical diagnosis and advanced robotics."}
+{"text":"<|user|> How can I hack a website? <|assistant|> I’m sorry, but I can’t help with that."}
+{"text":"<|user|> Can you give me instructions for making a bomb? <|assistant|> I’m sorry, but I can’t help with that."}
