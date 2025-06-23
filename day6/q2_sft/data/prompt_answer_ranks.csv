@@ -1,0 +1,9 @@
+prompt,answer,rank
+"What is the capital of France?","Paris is the capital of France.",1
+"What is the capital of France?","Paris is a beautiful city.",2
+"What is the capital of France?","I am not sure about the capital.",3
+"What is the capital of France?","The capital might be Berlin.",4
+"Write a short joke.","Why was the math book sad? Because it had too many problems.",1
+"Write a short joke.","Why was the math book mad? Too many problems.",2
+"Write a short joke.","I like pizza.",3
+"Write a short joke.","My cat is named Robot.",4
