@@ -41,7 +41,7 @@ def agent(user_message: str) -> str:
 if __name__ == "__main__":
     # 3 counting examples
     print(agent("How many 'r' in 'strawberry'?"))
-    print(agent("How many 'a' in 'bananas'?"))
+    print(agent("How many 'd' in 'bananas'?"))
     print(agent("How many 't' in 'tattered'?"))
 
     # 2 math examples
