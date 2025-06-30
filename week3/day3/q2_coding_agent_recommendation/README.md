@@ -2,6 +2,8 @@
 
 An intelligent web application that analyzes your coding tasks and recommends the best AI coding assistants for the job. Get personalized recommendations from 7+ top coding agents including GitHub Copilot, AWS CodeWhisperer, Cursor, and more.
 
+![Application Demo - Main Interface](frontend/src/images/ui-screenshot-1.png)
+
 ## ✨ Features
 
 - 🎯 **Smart Task Analysis**: Natural language processing of coding requirements
@@ -10,6 +12,14 @@ An intelligent web application that analyzes your coding tasks and recommends th
 - 💡 **Detailed Explanations**: Clear reasoning for each recommendation
 - 🎨 **Beautiful UI**: Modern, responsive interface with smooth animations
 - ⚡ **Instant Results**: Fast recommendations with detailed comparisons
+
+## 📸 Live Demo
+
+Here's the application in action, showing the intelligent recommendation system at work:
+
+![AI Agent Recommendations](frontend/src/images/ui-screenshot-2.png)
+
+*The interface displays personalized recommendations with detailed scoring, explanations, and comprehensive agent information to help developers make informed decisions.*
 
 ## 🏗️ Architecture
 
@@ -83,6 +93,18 @@ npm run dev
 - "Develop a REST API with authentication using Node.js"
 - "Write unit tests for my TypeScript React components"
 - "Build a machine learning model for image classification"
+
+## 🎨 User Interface
+
+The application features a modern, intuitive interface designed for optimal user experience:
+
+### Main Dashboard
+![Main Interface](frontend/src/images/ui-screenshot-1.png)
+*Clean, professional design with easy task input and example prompts to get started quickly.*
+
+### Recommendation Results  
+![Recommendation Results](frontend/src/images/ui-screenshot-2.png)
+*Detailed recommendations with scoring explanations, agent capabilities, and feature comparisons.*
 
 ## 🔍 How It Works
 

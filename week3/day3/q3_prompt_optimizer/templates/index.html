@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- HTML head section - contains page metadata and styling -->
+    <meta charset="UTF-8">  <!-- Character encoding for proper text display -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Responsive design -->
+    <title>Adaptive Prompt Optimizer</title>  <!-- Page title shown in browser tab -->
+    
+    <!-- CSS styling for our page -->
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;  /* Remove default margins */
+            padding: 0;  /* Remove default padding */
+            box-sizing: border-box;  /* Include padding/border in element width */
+        }
+        
+        /* Body styling - overall page appearance */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  /* Modern font */
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);  /* Gradient background */
+            min-height: 100vh;  /* Full viewport height */
+            padding: 20px;  /* Space around content */
+        }
+        
+        /* Main container styling */
+        .container {
+            max-width: 1200px;  /* Maximum width for content */
+            margin: 0 auto;  /* Center the container */
+            background: white;  /* White background */
+            border-radius: 15px;  /* Rounded corners */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);  /* Shadow effect */
+            overflow: hidden;  /* Hide content that overflows */
+        }
+        
+        /* Header styling */
+        .header {
+            background: linear-gradient(45deg, #2c3e50, #34495e);  /* Dark gradient */
+            color: white;  /* White text */
+            padding: 30px;  /* Space inside header */
+            text-align: center;  /* Center align text */
+        }
+        
+        .header h1 {
+            font-size: 2.5em;  /* Large title */
+            margin-bottom: 10px;  /* Space below title */
+        }
+        
+        .header p {
+            font-size: 1.1em;  /* Slightly larger subtitle */
+            opacity: 0.9;  /* Slightly transparent */
+        }
+        
+        /* Main content area */
+        .content {
+            padding: 40px;  /* Space inside content area */
+        }
+        
+        /* Form styling */
+        .form-group {
+            margin-bottom: 25px;  /* Space between form elements */
+        }
+        
+        .form-group label {
+            display: block;  /* Full width labels */
+            margin-bottom: 8px;  /* Space below labels */
+            font-weight: 600;  /* Bold labels */
+            color: #2c3e50;  /* Dark color */
+        }
+        
+        /* Input field styling */
+        .form-group textarea,
+        .form-group select {
+            width: 100%;  /* Full width */
+            padding: 12px 15px;  /* Space inside inputs */
+            border: 2px solid #e0e6ed;  /* Light border */
+            border-radius: 8px;  /* Rounded corners */
+            font-size: 16px;  /* Readable text size */
+            transition: border-color 0.3s ease;  /* Smooth border color change */
+        }
+        
+        /* Input focus effects */
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;  /* Remove default focus outline */
+            border-color: #667eea;  /* Blue border when focused */
+        }
+        
+        /* Textarea specific styling */
+        .form-group textarea {
+            min-height: 120px;  /* Minimum height for text area */
+            resize: vertical;  /* Allow vertical resizing only */
+            font-family: inherit;  /* Use same font as page */
+        }
+        
+        /* Button styling */
+        .btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);  /* Gradient background */
+            color: white;  /* White text */
+            border: none;  /* No border */
+            padding: 15px 30px;  /* Space inside button */
+            border-radius: 25px;  /* Rounded button */
+            font-size: 16px;  /* Button text size */
+            font-weight: 600;  /* Bold text */
+            cursor: pointer;  /* Pointer cursor on hover */
+            transition: all 0.3s ease;  /* Smooth transitions */
+            width: 100%;  /* Full width button */
+        }
+        
+        /* Button hover effect */
+        .btn:hover {
+            transform: translateY(-2px);  /* Lift button slightly */
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);  /* Add shadow */
+        }
+        
+        /* Results section styling */
+        .results {
+            margin-top: 30px;  /* Space above results */
+            display: none;  /* Hidden by default */
+        }
+        
+        /* Result cards */
+        .result-card {
+            background: #f8f9fa;  /* Light gray background */
+            border-radius: 10px;  /* Rounded corners */
+            padding: 20px;  /* Space inside card */
+            margin-bottom: 20px;  /* Space between cards */
+            border-left: 4px solid #667eea;  /* Blue left border */
+        }
+        
+        .result-card h3 {
+            color: #2c3e50;  /* Dark heading color */
+            margin-bottom: 15px;  /* Space below heading */
+        }
+        
+        /* Prompt display boxes */
+        .prompt-box {
+            background: white;  /* White background */
+            border: 1px solid #e0e6ed;  /* Light border */
+            border-radius: 6px;  /* Slightly rounded corners */
+            padding: 15px;  /* Space inside box */
+            font-family: 'Courier New', monospace;  /* Monospace font for code */
+            white-space: pre-wrap;  /* Preserve whitespace and wrapping */
+            margin-bottom: 15px;  /* Space below box */
+        }
+        
+        /* Analysis section styling */
+        .analysis-grid {
+            display: grid;  /* CSS Grid layout */
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));  /* Responsive columns */
+            gap: 15px;  /* Space between grid items */
+            margin-bottom: 20px;  /* Space below grid */
+        }
+        
+        .analysis-item {
+            background: white;  /* White background */
+            padding: 15px;  /* Space inside item */
+            border-radius: 6px;  /* Rounded corners */
+            border: 1px solid #e0e6ed;  /* Light border */
+        }
+        
+        .analysis-item strong {
+            color: #667eea;  /* Blue color for labels */
+        }
+        
+        /* Explanations list styling */
+        .explanations {
+            background: white;  /* White background */
+            border-radius: 6px;  /* Rounded corners */
+            padding: 15px;  /* Space inside */
+        }
+        
+        .explanations ol {
+            padding-left: 20px;  /* Indent list items */
+        }
+        
+        .explanations li {
+            margin-bottom: 8px;  /* Space between list items */
+            line-height: 1.6;  /* Improved line spacing */
+        }
+        
+        /* Loading state */
+        .loading {
+            opacity: 0.7;  /* Make slightly transparent */
+            pointer-events: none;  /* Disable interactions */
+        }
+        
+        /* Error message styling */
+        .error {
+            background: #fff5f5;  /* Light red background */
+            color: #c53030;  /* Red text */
+            border: 1px solid #feb2b2;  /* Red border */
+            border-radius: 6px;  /* Rounded corners */
+            padding: 15px;  /* Space inside */
+            margin-bottom: 20px;  /* Space below */
+        }
+        
+        /* Success message styling */
+        .success {
+            background: #f0fff4;  /* Light green background */
+            color: #22543d;  /* Green text */
+            border: 1px solid #9ae6b4;  /* Green border */
+            border-radius: 6px;  /* Rounded corners */
+            padding: 15px;  /* Space inside */
+            margin-bottom: 20px;  /* Space below */
+        }
+    </style>
+</head>
+<body>
+    <!-- Main page container -->
+    <div class="container">
+        <!-- Page header -->
+        <div class="header">
+            <h1>🚀 Adaptive Prompt Optimizer</h1>
+            <p>Optimize your prompts for specific AI coding tools</p>
+        </div>
+        
+        <!-- Main content area -->
+        <div class="content">
+            <!-- Input form -->
+            <form id="optimizerForm">
+                <!-- Prompt input section -->
+                <div class="form-group">
+                    <label for="prompt">Enter your prompt:</label>
+                    <textarea 
+                        id="prompt" 
+                        name="prompt" 
+                        placeholder="e.g., Write a function to calculate factorial"
+                        required>
+                    </textarea>
+                </div>
+                
+                <!-- Tool selection section -->
+                <div class="form-group">
+                    <label for="tool">Select target AI tool:</label>
+                    <select id="tool" name="tool" required>
+                        <option value="">Choose a tool...</option>
+                        <!-- Tool options will be populated from Flask -->
+                        {% for tool in tools %}
+                            <option value="{{ tool }}">{{ tool.title() }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <!-- Submit button -->
+                <button type="submit" class="btn" id="optimizeBtn">
+                    Optimize Prompt
+                </button>
+            </form>
+            
+            <!-- Results section (hidden initially) -->
+            <div id="results" class="results">
+                <!-- Before/After comparison -->
+                <div class="result-card">
+                    <h3>📝 Before & After Comparison</h3>
+                    <div>
+                        <strong>Original Prompt:</strong>
+                        <div id="originalPrompt" class="prompt-box"></div>
+                    </div>
+                    <div>
+                        <strong>Optimized Prompt:</strong>
+                        <div id="optimizedPrompt" class="prompt-box"></div>
+                    </div>
+                </div>
+                
+                <!-- Analysis results -->
+                <div class="result-card">
+                    <h3>🔍 Prompt Analysis</h3>
+                    <div id="analysisResults" class="analysis-grid"></div>
+                </div>
+                
+                <!-- Explanations -->
+                <div class="result-card">
+                    <h3>💡 Optimization Explanations</h3>
+                    <div id="explanations" class="explanations"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript for interactive functionality -->
+    <script>
+        // Get form and button elements
+        const form = document.getElementById('optimizerForm');  // The form element
+        const button = document.getElementById('optimizeBtn');  // Submit button
+        const resultsDiv = document.getElementById('results');  // Results container
+        
+        // Add event listener for form submission
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();  // Prevent default form submission
+            
+            // Get form data
+            const prompt = document.getElementById('prompt').value.trim();  // User's prompt
+            const tool = document.getElementById('tool').value;  // Selected tool
+            
+            // Validate input
+            if (!prompt) {
+                showError('Please enter a prompt to optimize');
+                return;
+            }
+            
+            if (!tool) {
+                showError('Please select a target tool');
+                return;
+            }
+            
+            // Show loading state
+            button.textContent = 'Optimizing...';  // Change button text
+            button.disabled = true;  // Disable button
+            resultsDiv.style.display = 'none';  // Hide previous results
+            
+            try {
+                // Send optimization request to server
+                const response = await fetch('/optimize', {
+                    method: 'POST',  // POST request
+                    headers: {
+                        'Content-Type': 'application/json',  // JSON content type
+                    },
+                    body: JSON.stringify({  // Convert data to JSON
+                        prompt: prompt,
+                        tool: tool
+                    })
+                });
+                
+                // Parse server response
+                const data = await response.json();
+                
+                // Check if optimization was successful
+                if (data.success) {
+                    showResults(data);  // Display results
+                } else {
+                    showError(data.error);  // Show error message
+                }
+                
+            } catch (error) {
+                // Handle network or parsing errors
+                showError('Network error: ' + error.message);
+            } finally {
+                // Reset button state
+                button.textContent = 'Optimize Prompt';  // Reset button text
+                button.disabled = false;  // Re-enable button
+            }
+        });
+        
+        // Function to display optimization results
+        function showResults(data) {
+            // Clear any previous error messages
+            clearMessages();
+            
+            // Populate before/after comparison
+            document.getElementById('originalPrompt').textContent = data.original_prompt;
+            document.getElementById('optimizedPrompt').textContent = data.optimized_prompt;
+            
+            // Populate analysis results
+            const analysisDiv = document.getElementById('analysisResults');
+            analysisDiv.innerHTML = `
+                <div class="analysis-item">
+                    <strong>Intent:</strong> ${data.analysis.intent}
+                </div>
+                <div class="analysis-item">
+                    <strong>Language:</strong> ${data.analysis.detected_language}
+                </div>
+                <div class="analysis-item">
+                    <strong>Complexity:</strong> ${data.analysis.complexity_level}
+                </div>
+                <div class="analysis-item">
+                    <strong>Word Count:</strong> ${data.analysis.word_count}
+                </div>
+                <div class="analysis-item">
+                    <strong>Has Code:</strong> ${data.analysis.has_code_context ? 'Yes' : 'No'}
+                </div>
+                <div class="analysis-item">
+                    <strong>Improvements:</strong> ${data.improvements_made}
+                </div>
+            `;
+            
+            // Populate explanations
+            const explanationsDiv = document.getElementById('explanations');
+            if (data.explanations && data.explanations.length > 0) {
+                const explanationsList = data.explanations.map(exp => `<li>${exp}</li>`).join('');
+                explanationsDiv.innerHTML = `<ol>${explanationsList}</ol>`;
+            } else {
+                explanationsDiv.innerHTML = '<p>No specific optimizations were needed for this prompt.</p>';
+            }
+            
+            // Show results section
+            resultsDiv.style.display = 'block';
+            
+            // Scroll to results
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Function to display error messages
+        function showError(message) {
+            clearMessages();  // Clear previous messages
+            
+            // Create error div
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error';
+            errorDiv.textContent = message;
+            
+            // Insert error before form
+            form.parentNode.insertBefore(errorDiv, form);
+        }
+        
+        // Function to clear all messages
+        function clearMessages() {
+            // Remove any existing error or success messages
+            const messages = document.querySelectorAll('.error, .success');
+            messages.forEach(msg => msg.remove());
+        }
+    </script>
+</body>
+</html>

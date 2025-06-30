@@ -1,0 +1,4 @@
+# Requirements for Adaptive Prompt Optimizer
+# Install with: pip install -r requirements.txt
+
+flask==3.0.0
